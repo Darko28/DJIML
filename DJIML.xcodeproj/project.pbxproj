@@ -7,21 +7,85 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6739C062A580965D06B62206 /* Pods_DJIML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78648C550FD18B6CC1CC108 /* Pods_DJIML.framework */; };
 		A25201B021119ECE00BADE9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201AF21119ECE00BADE9C /* AppDelegate.swift */; };
-		A25201B221119ECE00BADE9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201B121119ECE00BADE9C /* ViewController.swift */; };
 		A25201B521119ECE00BADE9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25201B321119ECE00BADE9C /* Main.storyboard */; };
 		A25201B721119ECF00BADE9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A25201B621119ECF00BADE9C /* Assets.xcassets */; };
 		A25201BA21119ECF00BADE9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25201B821119ECF00BADE9C /* LaunchScreen.storyboard */; };
+		A25201CB21119F3900BADE9C /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201C221119F3900BADE9C /* Math.swift */; };
+		A25201CC21119F3900BADE9C /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201C321119F3900BADE9C /* UIImage+CVPixelBuffer.swift */; };
+		A25201CD21119F3900BADE9C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201C421119F3900BADE9C /* Array.swift */; };
+		A25201CE21119F3900BADE9C /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201C521119F3900BADE9C /* BoundingBox.swift */; };
+		A25201CF21119F3900BADE9C /* Predictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201C621119F3900BADE9C /* Predictions.swift */; };
+		A25201D021119F3900BADE9C /* MultiArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201C721119F3900BADE9C /* MultiArray.swift */; };
+		A25201D121119F3900BADE9C /* CVPixelBuffer+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201C821119F3900BADE9C /* CVPixelBuffer+Helpers.swift */; };
+		A25201D221119F3900BADE9C /* NonMaxSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201C921119F3900BADE9C /* NonMaxSuppression.swift */; };
+		A25201D321119F3900BADE9C /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201CA21119F3900BADE9C /* MLMultiArray+Image.swift */; };
+		A25EBB4A2111A2A7009D9091 /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25EBB492111A28D009D9091 /* VideoPreviewer.framework */; };
+		A25EBB4B2111A2A7009D9091 /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A25EBB492111A28D009D9091 /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A2B91B272111A6A10068274F /* TinyYOLO.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B222111A6A00068274F /* TinyYOLO.mlmodel */; };
+		A2B91B282111A6A10068274F /* DJIMLHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B232111A6A00068274F /* DJIMLHelpers.swift */; };
+		A2B91B292111A6A10068274F /* DJIVideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B242111A6A00068274F /* DJIVideoCapture.swift */; };
+		A2B91B2A2111A6A10068274F /* DJIMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B252111A6A00068274F /* DJIMLViewController.swift */; };
+		A2B91B2B2111A6A10068274F /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B262111A6A00068274F /* YOLO.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A25EBB482111A28D009D9091 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A25EBB442111A28D009D9091 /* VideoPreviewer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 02A543FD1C3C51CB0083C11B;
+			remoteInfo = VideoPreviewer;
+		};
+		A25EBB4C2111A2A7009D9091 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A25EBB442111A28D009D9091 /* VideoPreviewer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 02A543FC1C3C51CB0083C11B;
+			remoteInfo = VideoPreviewer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A25EBB4E2111A2A7009D9091 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A25EBB4B2111A2A7009D9091 /* VideoPreviewer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		5934A21DC08FD736A96D0899 /* Pods-DJIML.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJIML.release.xcconfig"; path = "Pods/Target Support Files/Pods-DJIML/Pods-DJIML.release.xcconfig"; sourceTree = "<group>"; };
 		A25201AC21119ECE00BADE9C /* DJIML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DJIML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25201AF21119ECE00BADE9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A25201B121119ECE00BADE9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A25201B421119ECE00BADE9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A25201B621119ECF00BADE9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A25201B921119ECF00BADE9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A25201BB21119ECF00BADE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A25201C221119F3900BADE9C /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		A25201C321119F3900BADE9C /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
+		A25201C421119F3900BADE9C /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		A25201C521119F3900BADE9C /* BoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
+		A25201C621119F3900BADE9C /* Predictions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predictions.swift; sourceTree = "<group>"; };
+		A25201C721119F3900BADE9C /* MultiArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiArray.swift; sourceTree = "<group>"; };
+		A25201C821119F3900BADE9C /* CVPixelBuffer+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Helpers.swift"; sourceTree = "<group>"; };
+		A25201C921119F3900BADE9C /* NonMaxSuppression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonMaxSuppression.swift; sourceTree = "<group>"; };
+		A25201CA21119F3900BADE9C /* MLMultiArray+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Image.swift"; sourceTree = "<group>"; };
+		A25EBB442111A28D009D9091 /* VideoPreviewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VideoPreviewer.xcodeproj; path = VideoPreviewer/VideoPreviewer.xcodeproj; sourceTree = "<group>"; };
+		A2B91B222111A6A00068274F /* TinyYOLO.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TinyYOLO.mlmodel; sourceTree = "<group>"; };
+		A2B91B232111A6A00068274F /* DJIMLHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIMLHelpers.swift; sourceTree = "<group>"; };
+		A2B91B242111A6A00068274F /* DJIVideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIVideoCapture.swift; sourceTree = "<group>"; };
+		A2B91B252111A6A00068274F /* DJIMLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIMLViewController.swift; sourceTree = "<group>"; };
+		A2B91B262111A6A00068274F /* YOLO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
+		C78648C550FD18B6CC1CC108 /* Pods_DJIML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DJIML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCC982CA80434BFB68F613A6 /* Pods-DJIML.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJIML.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DJIML/Pods-DJIML.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +93,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A25EBB4A2111A2A7009D9091 /* VideoPreviewer.framework in Frameworks */,
+				6739C062A580965D06B62206 /* Pods_DJIML.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		210922E40C420787E25C0F71 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FCC982CA80434BFB68F613A6 /* Pods-DJIML.debug.xcconfig */,
+				5934A21DC08FD736A96D0899 /* Pods-DJIML.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A25201A321119ECE00BADE9C = {
 			isa = PBXGroup;
 			children = (
 				A25201AE21119ECE00BADE9C /* DJIML */,
 				A25201AD21119ECE00BADE9C /* Products */,
+				210922E40C420787E25C0F71 /* Pods */,
+				AA086BAD354BB18B865F6CE4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +131,52 @@
 		A25201AE21119ECE00BADE9C /* DJIML */ = {
 			isa = PBXGroup;
 			children = (
+				A2B91B232111A6A00068274F /* DJIMLHelpers.swift */,
+				A2B91B252111A6A00068274F /* DJIMLViewController.swift */,
+				A2B91B242111A6A00068274F /* DJIVideoCapture.swift */,
+				A2B91B222111A6A00068274F /* TinyYOLO.mlmodel */,
+				A2B91B262111A6A00068274F /* YOLO.swift */,
+				A25201C521119F3900BADE9C /* BoundingBox.swift */,
+				A25201C121119F3900BADE9C /* CoreMLUtils */,
 				A25201AF21119ECE00BADE9C /* AppDelegate.swift */,
-				A25201B121119ECE00BADE9C /* ViewController.swift */,
 				A25201B321119ECE00BADE9C /* Main.storyboard */,
 				A25201B621119ECF00BADE9C /* Assets.xcassets */,
 				A25201B821119ECF00BADE9C /* LaunchScreen.storyboard */,
 				A25201BB21119ECF00BADE9C /* Info.plist */,
 			);
 			path = DJIML;
+			sourceTree = "<group>";
+		};
+		A25201C121119F3900BADE9C /* CoreMLUtils */ = {
+			isa = PBXGroup;
+			children = (
+				A25201C221119F3900BADE9C /* Math.swift */,
+				A25201C321119F3900BADE9C /* UIImage+CVPixelBuffer.swift */,
+				A25201C421119F3900BADE9C /* Array.swift */,
+				A25201C621119F3900BADE9C /* Predictions.swift */,
+				A25201C721119F3900BADE9C /* MultiArray.swift */,
+				A25201C821119F3900BADE9C /* CVPixelBuffer+Helpers.swift */,
+				A25201C921119F3900BADE9C /* NonMaxSuppression.swift */,
+				A25201CA21119F3900BADE9C /* MLMultiArray+Image.swift */,
+			);
+			path = CoreMLUtils;
+			sourceTree = "<group>";
+		};
+		A25EBB452111A28D009D9091 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A25EBB492111A28D009D9091 /* VideoPreviewer.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA086BAD354BB18B865F6CE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A25EBB442111A28D009D9091 /* VideoPreviewer.xcodeproj */,
+				C78648C550FD18B6CC1CC108 /* Pods_DJIML.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,13 +186,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A25201BE21119ECF00BADE9C /* Build configuration list for PBXNativeTarget "DJIML" */;
 			buildPhases = (
+				C4912CF7F018E918F6ACC8CE /* [CP] Check Pods Manifest.lock */,
 				A25201A821119ECE00BADE9C /* Sources */,
 				A25201A921119ECE00BADE9C /* Frameworks */,
 				A25201AA21119ECE00BADE9C /* Resources */,
+				CBD03357C074F763F17753E9 /* [CP] Embed Pods Frameworks */,
+				A25EBB4E2111A2A7009D9091 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A25EBB4D2111A2A7009D9091 /* PBXTargetDependency */,
 			);
 			name = DJIML;
 			productName = DJIML;
@@ -110,12 +229,28 @@
 			mainGroup = A25201A321119ECE00BADE9C;
 			productRefGroup = A25201AD21119ECE00BADE9C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A25EBB452111A28D009D9091 /* Products */;
+					ProjectRef = A25EBB442111A28D009D9091 /* VideoPreviewer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A25201AB21119ECE00BADE9C /* DJIML */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A25EBB492111A28D009D9091 /* VideoPreviewer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VideoPreviewer.framework;
+			remoteRef = A25EBB482111A28D009D9091 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A25201AA21119ECE00BADE9C /* Resources */ = {
@@ -130,17 +265,77 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C4912CF7F018E918F6ACC8CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DJIML-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBD03357C074F763F17753E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DJIML/Pods-DJIML-frameworks.sh",
+				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DJIML/Pods-DJIML-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A25201A821119ECE00BADE9C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A25201B221119ECE00BADE9C /* ViewController.swift in Sources */,
+				A2B91B282111A6A10068274F /* DJIMLHelpers.swift in Sources */,
+				A25201D321119F3900BADE9C /* MLMultiArray+Image.swift in Sources */,
+				A2B91B292111A6A10068274F /* DJIVideoCapture.swift in Sources */,
+				A25201CE21119F3900BADE9C /* BoundingBox.swift in Sources */,
+				A25201D121119F3900BADE9C /* CVPixelBuffer+Helpers.swift in Sources */,
+				A2B91B2A2111A6A10068274F /* DJIMLViewController.swift in Sources */,
 				A25201B021119ECE00BADE9C /* AppDelegate.swift in Sources */,
+				A25201CD21119F3900BADE9C /* Array.swift in Sources */,
+				A2B91B2B2111A6A10068274F /* YOLO.swift in Sources */,
+				A25201D021119F3900BADE9C /* MultiArray.swift in Sources */,
+				A25201CC21119F3900BADE9C /* UIImage+CVPixelBuffer.swift in Sources */,
+				A25201CF21119F3900BADE9C /* Predictions.swift in Sources */,
+				A25201D221119F3900BADE9C /* NonMaxSuppression.swift in Sources */,
+				A25201CB21119F3900BADE9C /* Math.swift in Sources */,
+				A2B91B272111A6A10068274F /* TinyYOLO.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A25EBB4D2111A2A7009D9091 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VideoPreviewer;
+			targetProxy = A25EBB4C2111A2A7009D9091 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A25201B321119ECE00BADE9C /* Main.storyboard */ = {
@@ -280,10 +475,14 @@
 		};
 		A25201BF21119ECF00BADE9C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCC982CA80434BFB68F613A6 /* Pods-DJIML.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HCYK33GWAM;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = DJIML/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -297,10 +496,14 @@
 		};
 		A25201C021119ECF00BADE9C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5934A21DC08FD736A96D0899 /* Pods-DJIML.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HCYK33GWAM;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = DJIML/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
