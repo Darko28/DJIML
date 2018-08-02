@@ -28,6 +28,7 @@
 		A2B91B292111A6A10068274F /* DJIVideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B242111A6A00068274F /* DJIVideoCapture.swift */; };
 		A2B91B2A2111A6A10068274F /* DJIMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B252111A6A00068274F /* DJIMLViewController.swift */; };
 		A2B91B2B2111A6A10068274F /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B262111A6A00068274F /* YOLO.swift */; };
+		A2E1638E211335AA008CB7FC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A2E1638D211335AA008CB7FC /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		A2B91B242111A6A00068274F /* DJIVideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIVideoCapture.swift; sourceTree = "<group>"; };
 		A2B91B252111A6A00068274F /* DJIMLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIMLViewController.swift; sourceTree = "<group>"; };
 		A2B91B262111A6A00068274F /* YOLO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
+		A2E1638D211335AA008CB7FC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C78648C550FD18B6CC1CC108 /* Pods_DJIML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DJIML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCC982CA80434BFB68F613A6 /* Pods-DJIML.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJIML.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DJIML/Pods-DJIML.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 		A25201A321119ECE00BADE9C = {
 			isa = PBXGroup;
 			children = (
+				A2E1638D211335AA008CB7FC /* README.md */,
 				A25201AE21119ECE00BADE9C /* DJIML */,
 				A25201AD21119ECE00BADE9C /* Products */,
 				210922E40C420787E25C0F71 /* Pods */,
@@ -259,6 +262,7 @@
 			files = (
 				A25201BA21119ECF00BADE9C /* LaunchScreen.storyboard in Resources */,
 				A25201B721119ECF00BADE9C /* Assets.xcassets in Resources */,
+				A2E1638E211335AA008CB7FC /* README.md in Resources */,
 				A25201B521119ECE00BADE9C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
