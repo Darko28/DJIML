@@ -212,6 +212,7 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
 //ffmpeg warpper
 @property (strong, nonatomic) DJICustomVideoFrameExtractor *videoExtractor;
 
+- (long long) getTickCount;
 
 
 /**

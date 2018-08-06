@@ -16,7 +16,7 @@ import DJISDK
 
 
 var ENABLE_BRIDGE_MODE = false
-let BRIDGE_IP = "192.168.0.105"
+let BRIDGE_IP = "192.168.0.104"
 
 class DJIMLViewController: UIViewController {
     
@@ -45,9 +45,14 @@ class DJIMLViewController: UIViewController {
     var frameCapturingStartTime = CACurrentMediaTime()
     
     let semaphore = DispatchSemaphore(value: 2)
-//    var lastTimestamp = CMTime()
-    var fps = 15
+    var lastTimestamp = CACurrentMediaTime()
+    var fps = 30
     static var deltaTime = 0
+    
+    var isPredicting = false
+    var previousBuffer: CVPixelBuffer?
+    
+    var delegate: DJIFrameCaptureDelegate?
 
     
     private func setupVideoPreviewer() {
@@ -58,6 +63,7 @@ class DJIMLViewController: UIViewController {
             
             if (product.model! == DJIAircraftModelNameA3 || product.model! == DJIAircraftModelNameN3 || product.model! == DJIAircraftModelNameMatrice600 || product.model! == DJIAircraftModelNameMatrice600Pro) {
                 DJISDKManager.videoFeeder()?.secondaryVideoFeed.add(self, with: nil)
+                self.lastTimestamp = CACurrentMediaTime()
             } else {
                 DJISDKManager.videoFeeder()?.primaryVideoFeed.add(self, with: nil)
             }
@@ -101,6 +107,9 @@ class DJIMLViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.registerApp()
+        
+        self.timeLabel.textColor = UIColor.white
+        self.fpvPreviewerView.addSubview(self.timeLabel)
         
         if videoDataProcessor != nil {
             videoDataProcessor!.delegate = self
@@ -202,6 +211,8 @@ class DJIMLViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         resizePreviewLayer()
+        self.timeLabel.textColor = UIColor.white
+        self.fpvPreviewerView.addSubview(self.timeLabel)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -221,6 +232,8 @@ class DJIMLViewController: UIViewController {
     }
     
     func predict(pixelBuffer: CVPixelBuffer) {
+        
+        print("Predicting...")
         
         // Measure how long it takes to predict a single video frame.
         let startTime = CACurrentMediaTime()
@@ -261,6 +274,8 @@ class DJIMLViewController: UIViewController {
         try? handler.perform([request])
     }
     
+    var boundingBox: [YOLO.Prediction]?
+    
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
         
         if let observations = request.results as? [VNCoreMLFeatureValueObservation],
@@ -268,6 +283,7 @@ class DJIMLViewController: UIViewController {
             
             print("Computing bounding box")
             let boundingBoxes = yolo.computeBoundingBoxes(features: features)
+            self.boundingBox = boundingBoxes
             let elapsed = CACurrentMediaTime() - startTimes.remove(at: 0)
             showOnMainThread(boundingBoxes, elapsed)
         }
@@ -285,7 +301,7 @@ class DJIMLViewController: UIViewController {
             self.show(predictions: boundingBoxes)
             
             let fps = self.measureFPS()
-//            self.timeLabel.text = String(format: "Elapsed %.5f seconds - %.2f FPS", elapsed, fps)
+            self.timeLabel.text = String(format: "Elapsed %.5f seconds - %.2f FPS", elapsed, fps)
             
             self.semaphore.signal()
         }
@@ -302,7 +318,7 @@ class DJIMLViewController: UIViewController {
             frameCapturingStartTime = CACurrentMediaTime()
         }
         
-        return currentFPSDelivered
+        return frameCapturingElapsed
     }
 
     func show(predictions: [YOLO.Prediction]) {
@@ -322,7 +338,7 @@ class DJIMLViewController: UIViewController {
                  The video preview also may be letterboxed at the top and bottom.
                  */
                 let width = view.bounds.width
-                let height = width * 3 / 4
+                let height = width * 4 / 3
                 let scaleX = width / CGFloat(YOLO.inputWidth)
                 let scaleY = height / CGFloat(YOLO.inputHeight)
                 let top = (view.bounds.height - height) / 2
@@ -339,6 +355,7 @@ class DJIMLViewController: UIViewController {
                 let label = String(format: "%@ %.1f", labels[prediction.classIndex], prediction.score * 100)
                 let color = colors[prediction.classIndex]
                 boundingBoxes[i].show(frame: rect, label: label, color: color)
+                self.isPredicting = false
             } else {
                 boundingBoxes[i].hide()
             }
@@ -429,12 +446,11 @@ extension DJIMLViewController: DJICameraDelegate {
 }
 
 
-extension DJIMLViewController: DJIVideoCaptureDelegate {
+extension DJIMLViewController: DJIFrameCaptureDelegate {
     
-    func videoCapture(_ capture: DJIVideoCapture, didCaptureDJIVideoFrame pixelBuffer: CVPixelBuffer?) {
+    func videoCapture(_ capture: DJIVideoFeed, didCaptureDJIVideoFrame pixelBuffer: CVPixelBuffer?) {
         
-        // For debugging.
-//        predict(image: UIImage(named: "dog")!); return
+        print("didCaptureFrame")
         
         semaphore.wait()
         
@@ -458,6 +474,34 @@ extension DJIMLViewController: DJIVideoFeedListener, DJIVideoDataProcessDelegate
     
     // MARK: - DJIVideoFeedListener
     
+    public func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData videoData: Data) {
+        
+        let videoBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: (videoData as NSData).length)
+        (videoData as NSData).getBytes(videoBuffer, length: (videoData as NSData).length)
+        VideoPreviewer.instance()?.push(videoBuffer, length: Int32((videoData as NSData).length))
+        
+        /*
+         Because lowering the capture device's FPS looks ugly in the preview,
+         we capture at full speed but only call the delegate at its desired framerate.
+         */
+        let timestamp = CACurrentMediaTime()
+        let deltaTime = timestamp - lastTimestamp
+        lastTimestamp = timestamp
+        
+        print("Current: \(deltaTime), ----, -----\(measureFPS())")
+        
+        if deltaTime > measureFPS() {
+            
+            print(">")
+            
+            if let frameBuffer = VideoPreviewer.instance()?.videoExtractor.getCVImage() {
+                videoCapture.delegate?.videoCapture(videoFeed, didCaptureDJIVideoFrame: frameBuffer.takeUnretainedValue())
+            }
+        }
+        
+    }
+
+    
     //    func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData videoData: Data) {
     //
     //        var data = videoData.withUnsafeBytes { (pointer: UnsafePointer<UInt8>) -> UInt8 in
@@ -472,58 +516,123 @@ extension DJIMLViewController: DJIVideoFeedListener, DJIVideoDataProcessDelegate
     //        print("\(Date())")
     //    }
 
-    public func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData videoData: Data) {
-        
-        let videoBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: (videoData as NSData).length)
-        (videoData as NSData).getBytes(videoBuffer, length: (videoData as NSData).length)
-        VideoPreviewer.instance()?.push(videoBuffer, length: Int32((videoData as NSData).length))
-        
-        /*
-         Because lowering the capture device's FPS looks ugly in the preview,
-         we capture at full speed but only call the delegate at its desired framerate.
-         */
-        
-//        let timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
+//    public func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData videoData: Data) {
+//
+//        let videoBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: (videoData as NSData).length)
+//        (videoData as NSData).getBytes(videoBuffer, length: (videoData as NSData).length)
+//        VideoPreviewer.instance()?.push(videoBuffer, length: Int32((videoData as NSData).length))
+//
+//        /*
+//         Because lowering the capture device's FPS looks ugly in the preview,
+//         we capture at full speed but only call the delegate at its desired framerate.
+//         */
+//
+////        let timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
+////        let deltaTime = timestamp - lastTimestamp
+////        if deltaTime >= CMTimeMake(1, Int32(fps)) {
+////            lastTimestamp = timestamp
+////            let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+////            delegate?.videoCapture(self, didCaptureVideoFrame: imageBuffer, timestamp: timestamp)
+////        }
+//
+//        let timestamp = VideoPreviewer.instance()!.getTickCount()
 //        let deltaTime = timestamp - lastTimestamp
-//        if deltaTime >= CMTimeMake(1, Int32(fps)) {
+//
+//        let cmDelta = CMTimeMake(value: deltaTime, timescale: 1000*1000)
+//
+//        let strDelta = String(format: "%.8f", Double(deltaTime)/1000/1000)
+//        let doubleDelta = Double(strDelta)
+//
+//        let doubleFPS = Double(String(format: "%.8f", Double(1/measureFPS())))
+//
+//        if doubleDelta! >= doubleFPS! {
+//
+//            print("About to get CVPixelBuffer image")
+//            print("delta1: \(cmDelta)")
+//
+//            print("doubleDelta: \(doubleDelta!)")
+//            print("doubleFPS: \(doubleFPS!)")
+//
 //            lastTimestamp = timestamp
-//            let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
-//            delegate?.videoCapture(self, didCaptureVideoFrame: imageBuffer, timestamp: timestamp)
+//
+//            DJIMLViewController.deltaTime += 1
+//
+////            videoDataProcessor?.getYuvFrame(UnsafeMutablePointer<VideoFrameYUV>!)
+//
+////            DispatchQueue.global().async {
+//
+//
+//            if !self.isPredicting {
+//                if let frameBuffer = VideoPreviewer.instance()?.videoExtractor.getCVImage() {
+//
+//                    self.previousBuffer = frameBuffer.takeUnretainedValue()
+//
+//                    print("Got CVPixelBuffer image")
+//                    let frameImage = UIImage(pixelBuffer: frameBuffer.takeRetainedValue())
+//
+//                    //                fpvPreviewerView.delegate?.videoCapture(self.fpvPreviewerView, didCaptureDJIVideoFrame: frameBuffer.takeRetainedValue())
+//
+//                    self.semaphore.wait()
+//
+//                    let pixelBuffer = frameBuffer.takeUnretainedValue()
+//
+//                    /*
+//                     For better throughput, perform the prediction on a background queue
+//                     instead of on the VideoCapture queue. We use the semaphore to block
+//                     the capture queue and drop frames when CoreML can't keep up.
+//                     */
+//                    DispatchQueue.global().async {
+//                        self.predict(pixelBuffer: pixelBuffer)
+//                        self.isPredicting = true
+//                        //                    self.predictUsingVision(pixelBuffer: pixelBuffer)
+//                    }
+//
+////                    DispatchQueue.global().asyncAfter(deadline: DispatchTime.distantFuture) {
+////                        self.predict(pixelBuffer: pixelBuffer)
+////                        self.isPredicting = true
+////                    }
+//
+//                }
+//            } else {
+//
+////                self.semaphore.wait()
+//
+//                DispatchQueue.global().async {
+////                    self.predict(pixelBuffer: self.previousBuffer!)
+//                    if self.boundingBox != nil {
+//                        self.show(predictions: self.boundingBox!)
+//                        self.isPredicting = true
+//                    }
+//                }
+//            }
+////            }
+//
+////            if let frameBuffer = VideoPreviewer.instance()?.videoExtractor.getCVImage() {
+////
+////                print("Got CVPixelBuffer image")
+////                let frameImage = UIImage(pixelBuffer: frameBuffer.takeRetainedValue())
+////
+//////                fpvPreviewerView.delegate?.videoCapture(self.fpvPreviewerView, didCaptureDJIVideoFrame: frameBuffer.takeRetainedValue())
+////
+////                semaphore.wait()
+////
+////                let pixelBuffer = frameBuffer.takeUnretainedValue()
+////
+////                /*
+////                 For better throughput, perform the prediction on a background queue
+////                 instead of on the VideoCapture queue. We use the semaphore to block
+////                 the capture queue and drop frames when CoreML can't keep up.
+////                 */
+////                DispatchQueue.global().async {
+////                    self.predict(pixelBuffer: pixelBuffer)
+//////                    self.predictUsingVision(pixelBuffer: pixelBuffer)
+////                }
+////            }
+//        } else {
+////            print("FPS: \(measureFPS())")
+//            print("delta2: \(deltaTime)")
+//            print("FramesDone: \(measureFPS())")
+//            DJIMLViewController.deltaTime = 0
 //        }
-        
-        if framesDone <= fps {
-            
-            print("About to get CVPixelBuffer image")
-            
-            DJIMLViewController.deltaTime += 1
-            
-//            videoDataProcessor?.getYuvFrame(UnsafeMutablePointer<VideoFrameYUV>!)
-            
-            if let frameBuffer = VideoPreviewer.instance()?.videoExtractor.getCVImage() {
-                
-                print("Got CVPixelBuffer image")
-                let frameImage = UIImage(pixelBuffer: frameBuffer.takeRetainedValue())
-                
-                fpvPreviewerView.delegate?.videoCapture(self.fpvPreviewerView, didCaptureDJIVideoFrame: frameBuffer.takeRetainedValue())
-                
-                semaphore.wait()
-                
-                let pixelBuffer = frameBuffer.takeUnretainedValue()
-                    
-                /*
-                 For better throughput, perform the prediction on a background queue
-                 instead of on the VideoCapture queue. We use the semaphore to block
-                 the capture queue and drop frames when CoreML can't keep up.
-                 */
-                DispatchQueue.global().async {
-//                    self.predict(pixelBuffer: pixelBuffer)
-                    self.predictUsingVision(pixelBuffer: pixelBuffer)
-                }
-            }
-        } else {
-//            print("FPS: \(measureFPS())")
-            print("FramesDone: \(framesDone)")
-            DJIMLViewController.deltaTime = 0
-        }
-    }
+//    }
 }

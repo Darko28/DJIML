@@ -15,21 +15,21 @@ import VideoPreviewer
 import DJISDK
 
 
-public protocol DJIVideoCaptureDelegate: class {
+public protocol DJIFrameCaptureDelegate: class {
 //    func videoCapture(_ capture: DJIVideoCapture, didCaptureDJIVideoFrame: CVPixelBuffer?, timestamp: CMTime)
-    func videoCapture(_ capture: DJIVideoCapture, didCaptureDJIVideoFrame: CVPixelBuffer?)
+    func videoCapture(_ capture: DJIVideoFeed, didCaptureDJIVideoFrame: CVPixelBuffer?)
 }
 
 
 public class DJIVideoCapture: UIView {
     
     public var previewLayer: UIView!
-    public weak var delegate: DJIVideoCaptureDelegate?
+    public weak var delegate: DJIFrameCaptureDelegate?
     public var fps = 15
     
 //    let captureSession = AVCaptureSession()
 //    let videoOutput = AVCaptureVideoDataOutput()
     let queue = DispatchQueue(label: "camera-queue")
     
-    var lastTimestamp = CMTime()
+    var lastTimestamp = CFAbsoluteTimeGetCurrent()
 }
