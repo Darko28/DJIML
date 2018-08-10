@@ -203,7 +203,8 @@ ss += ll; \
 		
 		NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
 								 [NSNumber numberWithBool:YES], kCVPixelBufferCGImageCompatibilityKey,
-								 [NSNumber numberWithBool:YES], kCVPixelBufferCGBitmapContextCompatibilityKey, nil];
+								 [NSNumber numberWithBool:YES], kCVPixelBufferCGBitmapContextCompatibilityKey,
+                                 [NSNumber numberWithBool:YES], kCVPixelBufferMetalCompatibilityKey, nil];
 		CVPixelBufferRef pixbuffer = NULL;
 		CVReturn create_status = CVPixelBufferCreate(kCFAllocatorDefault, _pFrame->width, _pFrame->height, kCVPixelFormatType_420YpCbCr8Planar, (__bridge CFDictionaryRef) options, &pixbuffer);
 		
@@ -238,6 +239,54 @@ ss += ll; \
 	}
 	return nil;
 }
+
+-(CVImageBufferRef)getRGBCVImage{
+    @synchronized (self) {
+        if(!_pFrame) return nil;
+        
+        
+        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 [NSNumber numberWithBool:YES], kCVPixelBufferCGImageCompatibilityKey,
+                                 [NSNumber numberWithBool:YES], kCVPixelBufferCGBitmapContextCompatibilityKey,
+                                 [NSNumber numberWithBool:YES], kCVPixelBufferMetalCompatibilityKey, nil];
+        CVPixelBufferRef pixbuffer = NULL;
+        CVReturn create_status = CVPixelBufferCreate(kCFAllocatorDefault, _pFrame->width, _pFrame->height, kCVPixelFormatType_32BGRA, (__bridge CFDictionaryRef) options, &pixbuffer);
+        
+        if (kCVReturnSuccess != create_status) {
+            NSLog(@"kCVReturnSuccess != create_status");
+            return nil;
+        }
+        
+        if( kCVReturnSuccess != CVPixelBufferLockBaseAddress(pixbuffer, 0)){
+            NSLog(@"kCVReturnSuccess != CVPixelBufferLockBaseAddress");
+            CFRelease(pixbuffer);
+            return nil;
+        }
+        
+        uint8_t* luma = (uint8_t*)CVPixelBufferGetBaseAddressOfPlane(pixbuffer, 0);
+        uint8_t* chromaB = (uint8_t*)CVPixelBufferGetBaseAddressOfPlane(pixbuffer, 1);
+        uint8_t* chromaR = (uint8_t*)CVPixelBufferGetBaseAddressOfPlane(pixbuffer, 2);
+        
+//        uint8_t* rgb = (uint8_t*)CVPixelBufferGetBaseAddress(pixbuffer);
+        
+        
+        if (!luma || !chromaB || !chromaR) {
+            NSLog(@"!luma||!chromaB||!chromaR");
+            CFRelease(pixbuffer);
+            return nil;
+        }
+        
+        //copy yuv data
+        _CP_YUV_FRAME_(luma, _pFrame->data[0], _pFrame->linesize[0], _pCodecCtx->width, _pCodecCtx->height);
+        _CP_YUV_FRAME_(chromaB, _pFrame->data[1], _pFrame->linesize[1], _pCodecCtx->width/2, _pCodecCtx->height/2);
+        _CP_YUV_FRAME_(chromaR, _pFrame->data[2], _pFrame->linesize[2], _pCodecCtx->width/2, _pCodecCtx->height/2);
+        
+        CVPixelBufferUnlockBaseAddress(pixbuffer, 0);
+        return pixbuffer;
+    }
+    return nil;
+}
+
 
 #undef _CP_YUV_FRAME_
 

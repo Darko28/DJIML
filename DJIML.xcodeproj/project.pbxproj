@@ -23,6 +23,23 @@
 		A25201D321119F3900BADE9C /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201CA21119F3900BADE9C /* MLMultiArray+Image.swift */; };
 		A25EBB4A2111A2A7009D9091 /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25EBB492111A28D009D9091 /* VideoPreviewer.framework */; };
 		A25EBB4B2111A2A7009D9091 /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A25EBB492111A28D009D9091 /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A263AAE3211B0D0F00B91AB7 /* SwiftFloat16.swift in Sources */ = {isa = PBXBuildFile; fileRef = A263AAE2211B0D0F00B91AB7 /* SwiftFloat16.swift */; };
+		A263AAE5211B12CD00B91AB7 /* MPSImage+Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = A263AAE4211B12CD00B91AB7 /* MPSImage+Float.swift */; };
+		A263AAE7211B204500B91AB7 /* MTLTexture+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = A263AAE6211B204500B91AB7 /* MTLTexture+Array.swift */; };
+		A263AAE9211B25EA00B91AB7 /* UIImage+RawBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A263AAE8211B25EA00B91AB7 /* UIImage+RawBytes.swift */; };
+		A263AAEB211B27DE00B91AB7 /* UIImage+MTLTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A263AAEA211B27DE00B91AB7 /* UIImage+MTLTexture.swift */; };
+		A263AAED211B2F3300B91AB7 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A263AAEC211B2F3300B91AB7 /* Debugging.swift */; };
+		A263AAEF211B30A800B91AB7 /* TextureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A263AAEE211B30A800B91AB7 /* TextureLoader.swift */; };
+		A263AAF1211B31D500B91AB7 /* MPSYOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A263AAF0211B31D500B91AB7 /* MPSYOLO.swift */; };
+		A263AAFD211B60FA00B91AB7 /* conv8.bin in Resources */ = {isa = PBXBuildFile; fileRef = A263AAF4211B60FA00B91AB7 /* conv8.bin */; };
+		A263AAFE211B60FA00B91AB7 /* conv9.bin in Resources */ = {isa = PBXBuildFile; fileRef = A263AAF5211B60FA00B91AB7 /* conv9.bin */; };
+		A263AAFF211B60FA00B91AB7 /* conv4.bin in Resources */ = {isa = PBXBuildFile; fileRef = A263AAF6211B60FA00B91AB7 /* conv4.bin */; };
+		A263AB00211B60FA00B91AB7 /* conv5.bin in Resources */ = {isa = PBXBuildFile; fileRef = A263AAF7211B60FA00B91AB7 /* conv5.bin */; };
+		A263AB01211B60FA00B91AB7 /* conv7.bin in Resources */ = {isa = PBXBuildFile; fileRef = A263AAF8211B60FA00B91AB7 /* conv7.bin */; };
+		A263AB02211B60FA00B91AB7 /* conv6.bin in Resources */ = {isa = PBXBuildFile; fileRef = A263AAF9211B60FA00B91AB7 /* conv6.bin */; };
+		A263AB03211B60FA00B91AB7 /* conv2.bin in Resources */ = {isa = PBXBuildFile; fileRef = A263AAFA211B60FA00B91AB7 /* conv2.bin */; };
+		A263AB04211B60FA00B91AB7 /* conv3.bin in Resources */ = {isa = PBXBuildFile; fileRef = A263AAFB211B60FA00B91AB7 /* conv3.bin */; };
+		A263AB05211B60FA00B91AB7 /* conv1.bin in Resources */ = {isa = PBXBuildFile; fileRef = A263AAFC211B60FA00B91AB7 /* conv1.bin */; };
 		A2B91B272111A6A10068274F /* TinyYOLO.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B222111A6A00068274F /* TinyYOLO.mlmodel */; };
 		A2B91B282111A6A10068274F /* DJIMLHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B232111A6A00068274F /* DJIMLHelpers.swift */; };
 		A2B91B292111A6A10068274F /* DJIVideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B242111A6A00068274F /* DJIVideoCapture.swift */; };
@@ -80,6 +97,23 @@
 		A25201C921119F3900BADE9C /* NonMaxSuppression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonMaxSuppression.swift; sourceTree = "<group>"; };
 		A25201CA21119F3900BADE9C /* MLMultiArray+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Image.swift"; sourceTree = "<group>"; };
 		A25EBB442111A28D009D9091 /* VideoPreviewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VideoPreviewer.xcodeproj; path = VideoPreviewer/VideoPreviewer.xcodeproj; sourceTree = "<group>"; };
+		A263AAE2211B0D0F00B91AB7 /* SwiftFloat16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFloat16.swift; sourceTree = "<group>"; };
+		A263AAE4211B12CD00B91AB7 /* MPSImage+Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MPSImage+Float.swift"; sourceTree = "<group>"; };
+		A263AAE6211B204500B91AB7 /* MTLTexture+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTLTexture+Array.swift"; sourceTree = "<group>"; };
+		A263AAE8211B25EA00B91AB7 /* UIImage+RawBytes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+RawBytes.swift"; sourceTree = "<group>"; };
+		A263AAEA211B27DE00B91AB7 /* UIImage+MTLTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+MTLTexture.swift"; sourceTree = "<group>"; };
+		A263AAEC211B2F3300B91AB7 /* Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debugging.swift; sourceTree = "<group>"; };
+		A263AAEE211B30A800B91AB7 /* TextureLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureLoader.swift; sourceTree = "<group>"; };
+		A263AAF0211B31D500B91AB7 /* MPSYOLO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSYOLO.swift; sourceTree = "<group>"; };
+		A263AAF4211B60FA00B91AB7 /* conv8.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = conv8.bin; sourceTree = "<group>"; };
+		A263AAF5211B60FA00B91AB7 /* conv9.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = conv9.bin; sourceTree = "<group>"; };
+		A263AAF6211B60FA00B91AB7 /* conv4.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = conv4.bin; sourceTree = "<group>"; };
+		A263AAF7211B60FA00B91AB7 /* conv5.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = conv5.bin; sourceTree = "<group>"; };
+		A263AAF8211B60FA00B91AB7 /* conv7.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = conv7.bin; sourceTree = "<group>"; };
+		A263AAF9211B60FA00B91AB7 /* conv6.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = conv6.bin; sourceTree = "<group>"; };
+		A263AAFA211B60FA00B91AB7 /* conv2.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = conv2.bin; sourceTree = "<group>"; };
+		A263AAFB211B60FA00B91AB7 /* conv3.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = conv3.bin; sourceTree = "<group>"; };
+		A263AAFC211B60FA00B91AB7 /* conv1.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = conv1.bin; sourceTree = "<group>"; };
 		A2B91B222111A6A00068274F /* TinyYOLO.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TinyYOLO.mlmodel; sourceTree = "<group>"; };
 		A2B91B232111A6A00068274F /* DJIMLHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIMLHelpers.swift; sourceTree = "<group>"; };
 		A2B91B242111A6A00068274F /* DJIVideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIVideoCapture.swift; sourceTree = "<group>"; };
@@ -134,13 +168,12 @@
 		A25201AE21119ECE00BADE9C /* DJIML */ = {
 			isa = PBXGroup;
 			children = (
-				A2B91B232111A6A00068274F /* DJIMLHelpers.swift */,
-				A2B91B252111A6A00068274F /* DJIMLViewController.swift */,
-				A2B91B242111A6A00068274F /* DJIVideoCapture.swift */,
-				A2B91B222111A6A00068274F /* TinyYOLO.mlmodel */,
-				A2B91B262111A6A00068274F /* YOLO.swift */,
-				A25201C521119F3900BADE9C /* BoundingBox.swift */,
 				A25201C121119F3900BADE9C /* CoreMLUtils */,
+				A263AAE0211B0A4200B91AB7 /* Common */,
+				A263AAE1211B0C8100B91AB7 /* CoreMLYOLO */,
+				A263AADF211B0A0300B91AB7 /* MPSYOLO */,
+				A2B91B242111A6A00068274F /* DJIVideoCapture.swift */,
+				A2B91B252111A6A00068274F /* DJIMLViewController.swift */,
 				A25201AF21119ECE00BADE9C /* AppDelegate.swift */,
 				A25201B321119ECE00BADE9C /* Main.storyboard */,
 				A25201B621119ECF00BADE9C /* Assets.xcassets */,
@@ -171,6 +204,56 @@
 				A25EBB492111A28D009D9091 /* VideoPreviewer.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A263AADF211B0A0300B91AB7 /* MPSYOLO */ = {
+			isa = PBXGroup;
+			children = (
+				A263AAF3211B60FA00B91AB7 /* Parameters */,
+				A263AAE2211B0D0F00B91AB7 /* SwiftFloat16.swift */,
+				A263AAE4211B12CD00B91AB7 /* MPSImage+Float.swift */,
+				A263AAE6211B204500B91AB7 /* MTLTexture+Array.swift */,
+				A263AAE8211B25EA00B91AB7 /* UIImage+RawBytes.swift */,
+				A263AAEA211B27DE00B91AB7 /* UIImage+MTLTexture.swift */,
+				A263AAEC211B2F3300B91AB7 /* Debugging.swift */,
+				A263AAEE211B30A800B91AB7 /* TextureLoader.swift */,
+				A263AAF0211B31D500B91AB7 /* MPSYOLO.swift */,
+			);
+			path = MPSYOLO;
+			sourceTree = "<group>";
+		};
+		A263AAE0211B0A4200B91AB7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A25201C521119F3900BADE9C /* BoundingBox.swift */,
+				A2B91B232111A6A00068274F /* DJIMLHelpers.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		A263AAE1211B0C8100B91AB7 /* CoreMLYOLO */ = {
+			isa = PBXGroup;
+			children = (
+				A2B91B262111A6A00068274F /* YOLO.swift */,
+				A2B91B222111A6A00068274F /* TinyYOLO.mlmodel */,
+			);
+			path = CoreMLYOLO;
+			sourceTree = "<group>";
+		};
+		A263AAF3211B60FA00B91AB7 /* Parameters */ = {
+			isa = PBXGroup;
+			children = (
+				A263AAF4211B60FA00B91AB7 /* conv8.bin */,
+				A263AAF5211B60FA00B91AB7 /* conv9.bin */,
+				A263AAF6211B60FA00B91AB7 /* conv4.bin */,
+				A263AAF7211B60FA00B91AB7 /* conv5.bin */,
+				A263AAF8211B60FA00B91AB7 /* conv7.bin */,
+				A263AAF9211B60FA00B91AB7 /* conv6.bin */,
+				A263AAFA211B60FA00B91AB7 /* conv2.bin */,
+				A263AAFB211B60FA00B91AB7 /* conv3.bin */,
+				A263AAFC211B60FA00B91AB7 /* conv1.bin */,
+			);
+			path = Parameters;
 			sourceTree = "<group>";
 		};
 		AA086BAD354BB18B865F6CE4 /* Frameworks */ = {
@@ -260,10 +343,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A263AB02211B60FA00B91AB7 /* conv6.bin in Resources */,
+				A263AB01211B60FA00B91AB7 /* conv7.bin in Resources */,
 				A25201BA21119ECF00BADE9C /* LaunchScreen.storyboard in Resources */,
+				A263AAFD211B60FA00B91AB7 /* conv8.bin in Resources */,
 				A25201B721119ECF00BADE9C /* Assets.xcassets in Resources */,
+				A263AB00211B60FA00B91AB7 /* conv5.bin in Resources */,
+				A263AAFE211B60FA00B91AB7 /* conv9.bin in Resources */,
+				A263AB03211B60FA00B91AB7 /* conv2.bin in Resources */,
 				A2E1638E211335AA008CB7FC /* README.md in Resources */,
+				A263AB05211B60FA00B91AB7 /* conv1.bin in Resources */,
+				A263AB04211B60FA00B91AB7 /* conv3.bin in Resources */,
 				A25201B521119ECE00BADE9C /* Main.storyboard in Resources */,
+				A263AAFF211B60FA00B91AB7 /* conv4.bin in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,17 +405,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A263AAEF211B30A800B91AB7 /* TextureLoader.swift in Sources */,
 				A2B91B282111A6A10068274F /* DJIMLHelpers.swift in Sources */,
+				A263AAED211B2F3300B91AB7 /* Debugging.swift in Sources */,
+				A263AAF1211B31D500B91AB7 /* MPSYOLO.swift in Sources */,
 				A25201D321119F3900BADE9C /* MLMultiArray+Image.swift in Sources */,
 				A2B91B292111A6A10068274F /* DJIVideoCapture.swift in Sources */,
 				A25201CE21119F3900BADE9C /* BoundingBox.swift in Sources */,
 				A25201D121119F3900BADE9C /* CVPixelBuffer+Helpers.swift in Sources */,
 				A2B91B2A2111A6A10068274F /* DJIMLViewController.swift in Sources */,
 				A25201B021119ECE00BADE9C /* AppDelegate.swift in Sources */,
+				A263AAE5211B12CD00B91AB7 /* MPSImage+Float.swift in Sources */,
+				A263AAE3211B0D0F00B91AB7 /* SwiftFloat16.swift in Sources */,
+				A263AAEB211B27DE00B91AB7 /* UIImage+MTLTexture.swift in Sources */,
 				A25201CD21119F3900BADE9C /* Array.swift in Sources */,
 				A2B91B2B2111A6A10068274F /* YOLO.swift in Sources */,
 				A25201D021119F3900BADE9C /* MultiArray.swift in Sources */,
 				A25201CC21119F3900BADE9C /* UIImage+CVPixelBuffer.swift in Sources */,
+				A263AAE9211B25EA00B91AB7 /* UIImage+RawBytes.swift in Sources */,
+				A263AAE7211B204500B91AB7 /* MTLTexture+Array.swift in Sources */,
 				A25201CF21119F3900BADE9C /* Predictions.swift in Sources */,
 				A25201D221119F3900BADE9C /* NonMaxSuppression.swift in Sources */,
 				A25201CB21119F3900BADE9C /* Math.swift in Sources */,

@@ -18,6 +18,7 @@ import DJISDK
 public protocol DJIFrameCaptureDelegate: class {
 //    func videoCapture(_ capture: DJIVideoCapture, didCaptureDJIVideoFrame: CVPixelBuffer?, timestamp: CMTime)
     func videoCapture(_ capture: DJIVideoFeed, didCaptureDJIVideoFrame: CVPixelBuffer?)
+    func videoCapture(_ capture: DJIVideoFeed, didCaptureDJIVideoTexture: MTLTexture?)
 }
 
 

@@ -86,6 +86,9 @@
  */
 -(CVPixelBufferRef) __attribute__((deprecated)) getCVImage;
 
+-(CVPixelBufferRef) getRGBCVImage;
+
+
 /**
  *  get the uuid for a frame
  *

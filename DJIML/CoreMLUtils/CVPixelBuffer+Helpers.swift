@@ -33,6 +33,7 @@ public func resizePixelBuffer(_ srcPixelBuffer: CVPixelBuffer,
                               cropHeight: Int,
                               scaleWidth: Int,
                               scaleHeight: Int) -> CVPixelBuffer? {
+    
     CVPixelBufferLockBaseAddress(srcPixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
     guard let srcData = CVPixelBufferGetBaseAddress(srcPixelBuffer) else {
         print("Error: Cound not get pixel buffer base address")

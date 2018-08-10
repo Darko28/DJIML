@@ -34,6 +34,7 @@ class YOLO {
     public func predict(image: CVPixelBuffer) throws -> [Prediction] {
         
         if let output = try? model.prediction(image: image) {
+            print("yolo compute bounding box")
             return computeBoundingBoxes(features: output.grid)
         } else {
             return []
