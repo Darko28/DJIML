@@ -16,15 +16,16 @@
 		15B3BACF29F5CF7750F545464455DCBB /* Pods-DJIML-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DJIML-umbrella.h"; sourceTree = "<group>"; };
 		193626807DE81AC394D673013F5292C4 /* Pods_DJIML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DJIML.framework; path = "Pods-DJIML.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F37272ADD929C10064D82BF4455388 /* Pods-DJIML-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DJIML-frameworks.sh"; sourceTree = "<group>"; };
+		3122F218FF63472D4F7DE0F82AF876DB /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = iOS_Mobile_SDK/DJISDK.framework; sourceTree = "<group>"; };
 		3B38DD32E786D49281CBFD9A71E10443 /* Pods-DJIML-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DJIML-acknowledgements.plist"; sourceTree = "<group>"; };
 		56BC980C08FD1D053265F63BC19539C1 /* Pods-DJIML-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DJIML-dummy.m"; sourceTree = "<group>"; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		60D35208A41F813C11CF2EABF1729F56 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = iOS_Mobile_SDK/DJISDK.framework; sourceTree = "<group>"; };
 		877DABFBA28A5F39184389A31EB10C51 /* Pods-DJIML.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DJIML.release.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9847089C5E2EE5135E3F4098CBB965F1 /* Pods-DJIML.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DJIML.modulemap"; sourceTree = "<group>"; };
 		ABF9BE7D761B5F197CC2741979C2D9F2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC5E039C91F21378B4C189138EAD0A7C /* Pods-DJIML-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DJIML-resources.sh"; sourceTree = "<group>"; };
+		CFF6FE491481ABE4C0EE890BF24AE46A /* DJIUXSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJIUXSDK.framework; path = iOS_UXSDK/DJIUXSDK.framework; sourceTree = "<group>"; };
 		DA38F33790B5DEE72F647D0E89BDCA7E /* Pods-DJIML-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DJIML-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E676A3BDA57CE537D857438A0B2B0923 /* Pods-DJIML.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DJIML.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,10 +42,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		56F41CF807F2E3D702FCC66A3C9E3ED3 /* Pods */ = {
+		29E5B1F51A2FBD1EB45B4005227B53CD /* DJI-UXSDK-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				B807EC8B5210DCC405066E964D6E24F1 /* DJI-SDK-iOS */,
+				3F697A9B4974C2C533F5E8B6AC2D4FFA /* Frameworks */,
+			);
+			name = "DJI-UXSDK-iOS";
+			path = "DJI-UXSDK-iOS";
+			sourceTree = "<group>";
+		};
+		2B252F7E09F9EFD17C885698F1ED4F07 /* DJI-SDK-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				327D7AA8F4913C7AE15FCA3BF2CC3ABF /* Frameworks */,
+			);
+			name = "DJI-SDK-iOS";
+			path = "DJI-SDK-iOS";
+			sourceTree = "<group>";
+		};
+		327D7AA8F4913C7AE15FCA3BF2CC3ABF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3122F218FF63472D4F7DE0F82AF876DB /* DJISDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3F697A9B4974C2C533F5E8B6AC2D4FFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFF6FE491481ABE4C0EE890BF24AE46A /* DJIUXSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		53D9DA1EAE78FBC98141B137030CE319 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B252F7E09F9EFD17C885698F1ED4F07 /* DJI-SDK-iOS */,
+				29E5B1F51A2FBD1EB45B4005227B53CD /* DJI-UXSDK-iOS */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -55,14 +91,6 @@
 				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		67CB930674CE5A381B0C1916D23A3035 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				60D35208A41F813C11CF2EABF1729F56 /* DJISDK.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		78F3ACB66D1A6030B5BE26ADB16EAE17 /* Products */ = {
@@ -78,19 +106,10 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				56F41CF807F2E3D702FCC66A3C9E3ED3 /* Pods */,
+				53D9DA1EAE78FBC98141B137030CE319 /* Pods */,
 				78F3ACB66D1A6030B5BE26ADB16EAE17 /* Products */,
 				D598CC396826C89720C38416FF077B5B /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		B807EC8B5210DCC405066E964D6E24F1 /* DJI-SDK-iOS */ = {
-			isa = PBXGroup;
-			children = (
-				67CB930674CE5A381B0C1916D23A3035 /* Frameworks */,
-			);
-			name = "DJI-SDK-iOS";
-			path = "DJI-SDK-iOS";
 			sourceTree = "<group>";
 		};
 		B8A454FB5EDE922DDF16EC0C3732F483 /* Pods-DJIML */ = {
@@ -196,9 +215,9 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0D71D8E937C3A9E4A7AFE4A3C8CDCC91 /* Debug */ = {
+		37BE1DCA902297404A82A59889E9E2A3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E676A3BDA57CE537D857438A0B2B0923 /* Pods-DJIML.debug.xcconfig */;
+			baseConfigurationReference = 877DABFBA28A5F39184389A31EB10C51 /* Pods-DJIML.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -213,7 +232,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-DJIML/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -229,12 +248,13 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		0E12B7268EF0862DFEEB8B6B0BD7C9F4 /* Debug */ = {
+		5DC0083F57E9AB706B46C5B5D73B38D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -287,7 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -297,46 +317,7 @@
 			};
 			name = Debug;
 		};
-		51BE53B7EA8E1BBC45EF4D475FA6804A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 877DABFBA28A5F39184389A31EB10C51 /* Pods-DJIML.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-DJIML/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-DJIML/Pods-DJIML.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CD8324D57CD462761E218EEA4EA91EC7 /* Release */ = {
+		AEEA80476F98EB645C4DD53EB2BB6D88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -386,7 +367,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -394,14 +375,52 @@
 			};
 			name = Release;
 		};
+		CA7FA342B949CB5E390A7A1E09ACDDE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E676A3BDA57CE537D857438A0B2B0923 /* Pods-DJIML.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-DJIML/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DJIML/Pods-DJIML.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0E12B7268EF0862DFEEB8B6B0BD7C9F4 /* Debug */,
-				CD8324D57CD462761E218EEA4EA91EC7 /* Release */,
+				5DC0083F57E9AB706B46C5B5D73B38D8 /* Debug */,
+				AEEA80476F98EB645C4DD53EB2BB6D88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -409,8 +428,8 @@
 		9691C33B2CE062C67979C5DD8CEBA603 /* Build configuration list for PBXNativeTarget "Pods-DJIML" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0D71D8E937C3A9E4A7AFE4A3C8CDCC91 /* Debug */,
-				51BE53B7EA8E1BBC45EF4D475FA6804A /* Release */,
+				CA7FA342B949CB5E390A7A1E09ACDDE4 /* Debug */,
+				37BE1DCA902297404A82A59889E9E2A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

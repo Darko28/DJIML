@@ -64,7 +64,7 @@ extension UIImage {
      */
     public convenience init?(pixelBuffer: CVPixelBuffer) {
         var cgImage: CGImage?
-        VTCreateCGImageFromCVPixelBuffer(pixelBuffer, options: nil, imageOut: &cgImage)
+        VTCreateCGImageFromCVPixelBuffer(pixelBuffer, nil, &cgImage)
         
         if let cgImage = cgImage {
             self.init(cgImage: cgImage)
@@ -95,7 +95,7 @@ extension UIImage {
                                                  width: Int,
                                                  height: Int,
                                                  scale: CGFloat = 0,
-                                                 orientation: UIImage.Orientation = .up) -> UIImage? {
+                                                 orientation: UIImageOrientation = .up) -> UIImage? {
         return fromByteArray(bytes, width: width, height: height, scale: scale, orientation: orientation, bytesPerRow: width * 4, colorSpace: CGColorSpaceCreateDeviceRGB(), alphaInfo: .premultipliedLast)
     }
     
@@ -106,7 +106,7 @@ extension UIImage {
                                                  width: Int,
                                                  height: Int,
                                                  scale: CGFloat = 0,
-                                                 orientation: UIImage.Orientation = .up) -> UIImage? {
+                                                 orientation: UIImageOrientation = .up) -> UIImage? {
         return fromByteArray(bytes, width: width, height: height, scale: scale, orientation: orientation, bytesPerRow: width, colorSpace: CGColorSpaceCreateDeviceGray(), alphaInfo: .none)
     }
     
@@ -114,7 +114,7 @@ extension UIImage {
                                       width: Int,
                                       height: Int,
                                       scale: CGFloat,
-                                      orientation: UIImage.Orientation,
+                                      orientation: UIImageOrientation,
                                       bytesPerRow: Int,
                                       colorSpace: CGColorSpace,
                                       alphaInfo: CGImageAlphaInfo) -> UIImage? {

@@ -18,8 +18,8 @@ class YOLO {
     public static let maxBoundingBoxes = 10
     
     // Tweak these values to get more or fewer predictions
-    let confidenceThreshold: Float = 0.3
-    let iouThreshold: Float = 0.5
+    let confidenceThreshold: Float = 0.60
+    let iouThreshold: Float = 0.4
     
     struct Prediction {
         let classIndex: Int
@@ -27,7 +27,7 @@ class YOLO {
         let rect: CGRect
     }
     
-    let model = TinyYOLO()
+    let model = TinyCOCOYOLO()
     
     public init() {}
     
@@ -43,7 +43,7 @@ class YOLO {
     
     public func computeBoundingBoxes(features: MLMultiArray) -> [Prediction] {
         
-        assert(features.count == 125 * 13 * 13)
+        assert(features.count == 425 * 13 * 13)
         
         var predictions = [Prediction]()
         
@@ -51,7 +51,7 @@ class YOLO {
         let gridHeight = 13
         let gridWidth = 13
         let boxesPerCell = 5
-        let numClasses = 20
+        let numClasses = 80
         
         /*
          The 416x416 image is divided into a 13x13 grid. Each of these grid cells will
@@ -113,8 +113,8 @@ class YOLO {
                      The size of the bounding box, tw and th, is predicted relative to the size of an "anchor" box.
                      Here we also transform the width and height into the original 416x416 image space.
                      */
-                    let w = exp(tw) * anchors[2*b] * blockSize
-                    let h = exp(th) * anchors[2*b + 1] * blockSize
+                    let w = exp(tw) * cocoAnchors[2*b] * blockSize
+                    let h = exp(th) * cocoAnchors[2*b + 1] * blockSize
                     
                     /*
                      The confidence value for the bounding box is given by tc.

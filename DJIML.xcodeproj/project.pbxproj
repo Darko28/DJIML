@@ -21,6 +21,7 @@
 		A25201D121119F3900BADE9C /* CVPixelBuffer+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201C821119F3900BADE9C /* CVPixelBuffer+Helpers.swift */; };
 		A25201D221119F3900BADE9C /* NonMaxSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201C921119F3900BADE9C /* NonMaxSuppression.swift */; };
 		A25201D321119F3900BADE9C /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25201CA21119F3900BADE9C /* MLMultiArray+Image.swift */; };
+		A259EE4B2129BD12009B7E79 /* TinyCOCOYOLO.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A259EE4A2129BD12009B7E79 /* TinyCOCOYOLO.mlmodel */; };
 		A25EBB4A2111A2A7009D9091 /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25EBB492111A28D009D9091 /* VideoPreviewer.framework */; };
 		A25EBB4B2111A2A7009D9091 /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A25EBB492111A28D009D9091 /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A263AAE3211B0D0F00B91AB7 /* SwiftFloat16.swift in Sources */ = {isa = PBXBuildFile; fileRef = A263AAE2211B0D0F00B91AB7 /* SwiftFloat16.swift */; };
@@ -40,6 +41,8 @@
 		A263AB03211B60FA00B91AB7 /* conv2.bin in Resources */ = {isa = PBXBuildFile; fileRef = A263AAFA211B60FA00B91AB7 /* conv2.bin */; };
 		A263AB04211B60FA00B91AB7 /* conv3.bin in Resources */ = {isa = PBXBuildFile; fileRef = A263AAFB211B60FA00B91AB7 /* conv3.bin */; };
 		A263AB05211B60FA00B91AB7 /* conv1.bin in Resources */ = {isa = PBXBuildFile; fileRef = A263AAFC211B60FA00B91AB7 /* conv1.bin */; };
+		A27AA18B2129BFCA00C834DD /* DefaultLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27AA1892129BFC900C834DD /* DefaultLayoutViewController.swift */; };
+		A27AA18C2129BFCA00C834DD /* DJIMLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A27AA18A2129BFC900C834DD /* DJIMLViewController.xib */; };
 		A2B91B272111A6A10068274F /* TinyYOLO.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B222111A6A00068274F /* TinyYOLO.mlmodel */; };
 		A2B91B282111A6A10068274F /* DJIMLHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B232111A6A00068274F /* DJIMLHelpers.swift */; };
 		A2B91B292111A6A10068274F /* DJIVideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B242111A6A00068274F /* DJIVideoCapture.swift */; };
@@ -96,6 +99,7 @@
 		A25201C821119F3900BADE9C /* CVPixelBuffer+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Helpers.swift"; sourceTree = "<group>"; };
 		A25201C921119F3900BADE9C /* NonMaxSuppression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonMaxSuppression.swift; sourceTree = "<group>"; };
 		A25201CA21119F3900BADE9C /* MLMultiArray+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Image.swift"; sourceTree = "<group>"; };
+		A259EE4A2129BD12009B7E79 /* TinyCOCOYOLO.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TinyCOCOYOLO.mlmodel; sourceTree = "<group>"; };
 		A25EBB442111A28D009D9091 /* VideoPreviewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VideoPreviewer.xcodeproj; path = VideoPreviewer/VideoPreviewer.xcodeproj; sourceTree = "<group>"; };
 		A263AAE2211B0D0F00B91AB7 /* SwiftFloat16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFloat16.swift; sourceTree = "<group>"; };
 		A263AAE4211B12CD00B91AB7 /* MPSImage+Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MPSImage+Float.swift"; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 		A263AAFA211B60FA00B91AB7 /* conv2.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = conv2.bin; sourceTree = "<group>"; };
 		A263AAFB211B60FA00B91AB7 /* conv3.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = conv3.bin; sourceTree = "<group>"; };
 		A263AAFC211B60FA00B91AB7 /* conv1.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = conv1.bin; sourceTree = "<group>"; };
+		A27AA1892129BFC900C834DD /* DefaultLayoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultLayoutViewController.swift; sourceTree = "<group>"; };
+		A27AA18A2129BFC900C834DD /* DJIMLViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DJIMLViewController.xib; sourceTree = "<group>"; };
 		A2B91B222111A6A00068274F /* TinyYOLO.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TinyYOLO.mlmodel; sourceTree = "<group>"; };
 		A2B91B232111A6A00068274F /* DJIMLHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIMLHelpers.swift; sourceTree = "<group>"; };
 		A2B91B242111A6A00068274F /* DJIVideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIVideoCapture.swift; sourceTree = "<group>"; };
@@ -168,13 +174,15 @@
 		A25201AE21119ECE00BADE9C /* DJIML */ = {
 			isa = PBXGroup;
 			children = (
+				A259EE4C2129BD40009B7E79 /* Common */,
 				A25201C121119F3900BADE9C /* CoreMLUtils */,
-				A263AAE0211B0A4200B91AB7 /* Common */,
 				A263AAE1211B0C8100B91AB7 /* CoreMLYOLO */,
 				A263AADF211B0A0300B91AB7 /* MPSYOLO */,
 				A2B91B242111A6A00068274F /* DJIVideoCapture.swift */,
 				A2B91B252111A6A00068274F /* DJIMLViewController.swift */,
+				A27AA1892129BFC900C834DD /* DefaultLayoutViewController.swift */,
 				A25201AF21119ECE00BADE9C /* AppDelegate.swift */,
+				A27AA18A2129BFC900C834DD /* DJIMLViewController.xib */,
 				A25201B321119ECE00BADE9C /* Main.storyboard */,
 				A25201B621119ECF00BADE9C /* Assets.xcassets */,
 				A25201B821119ECF00BADE9C /* LaunchScreen.storyboard */,
@@ -187,15 +195,24 @@
 			isa = PBXGroup;
 			children = (
 				A25201C221119F3900BADE9C /* Math.swift */,
-				A25201C321119F3900BADE9C /* UIImage+CVPixelBuffer.swift */,
 				A25201C421119F3900BADE9C /* Array.swift */,
-				A25201C621119F3900BADE9C /* Predictions.swift */,
 				A25201C721119F3900BADE9C /* MultiArray.swift */,
-				A25201C821119F3900BADE9C /* CVPixelBuffer+Helpers.swift */,
+				A25201C621119F3900BADE9C /* Predictions.swift */,
 				A25201C921119F3900BADE9C /* NonMaxSuppression.swift */,
+				A25201C821119F3900BADE9C /* CVPixelBuffer+Helpers.swift */,
+				A25201C321119F3900BADE9C /* UIImage+CVPixelBuffer.swift */,
 				A25201CA21119F3900BADE9C /* MLMultiArray+Image.swift */,
 			);
 			path = CoreMLUtils;
+			sourceTree = "<group>";
+		};
+		A259EE4C2129BD40009B7E79 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A25201C521119F3900BADE9C /* BoundingBox.swift */,
+				A2B91B232111A6A00068274F /* DJIMLHelpers.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		A25EBB452111A28D009D9091 /* Products */ = {
@@ -222,20 +239,12 @@
 			path = MPSYOLO;
 			sourceTree = "<group>";
 		};
-		A263AAE0211B0A4200B91AB7 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				A25201C521119F3900BADE9C /* BoundingBox.swift */,
-				A2B91B232111A6A00068274F /* DJIMLHelpers.swift */,
-			);
-			name = Common;
-			sourceTree = "<group>";
-		};
 		A263AAE1211B0C8100B91AB7 /* CoreMLYOLO */ = {
 			isa = PBXGroup;
 			children = (
-				A2B91B262111A6A00068274F /* YOLO.swift */,
+				A259EE4A2129BD12009B7E79 /* TinyCOCOYOLO.mlmodel */,
 				A2B91B222111A6A00068274F /* TinyYOLO.mlmodel */,
+				A2B91B262111A6A00068274F /* YOLO.swift */,
 			);
 			path = CoreMLYOLO;
 			sourceTree = "<group>";
@@ -344,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A263AB02211B60FA00B91AB7 /* conv6.bin in Resources */,
+				A27AA18C2129BFCA00C834DD /* DJIMLViewController.xib in Resources */,
 				A263AB01211B60FA00B91AB7 /* conv7.bin in Resources */,
 				A25201BA21119ECF00BADE9C /* LaunchScreen.storyboard in Resources */,
 				A263AAFD211B60FA00B91AB7 /* conv8.bin in Resources */,
@@ -388,10 +398,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DJIML/Pods-DJIML-frameworks.sh",
 				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
+				"${PODS_ROOT}/DJI-UXSDK-iOS/iOS_UXSDK/DJIUXSDK.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIUXSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -418,6 +430,7 @@
 				A263AAE5211B12CD00B91AB7 /* MPSImage+Float.swift in Sources */,
 				A263AAE3211B0D0F00B91AB7 /* SwiftFloat16.swift in Sources */,
 				A263AAEB211B27DE00B91AB7 /* UIImage+MTLTexture.swift in Sources */,
+				A27AA18B2129BFCA00C834DD /* DefaultLayoutViewController.swift in Sources */,
 				A25201CD21119F3900BADE9C /* Array.swift in Sources */,
 				A2B91B2B2111A6A10068274F /* YOLO.swift in Sources */,
 				A25201D021119F3900BADE9C /* MultiArray.swift in Sources */,
@@ -428,6 +441,7 @@
 				A25201D221119F3900BADE9C /* NonMaxSuppression.swift in Sources */,
 				A25201CB21119F3900BADE9C /* Math.swift in Sources */,
 				A2B91B272111A6A10068274F /* TinyYOLO.mlmodel in Sources */,
+				A259EE4B2129BD12009B7E79 /* TinyCOCOYOLO.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,7 +609,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Darko.DJIML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -618,7 +632,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Darko.DJIML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

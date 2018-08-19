@@ -13,6 +13,7 @@ import CoreVideo
 import CoreMedia
 import VideoPreviewer
 import DJISDK
+import DJIUXSDK
 
 
 public protocol DJIFrameCaptureDelegate: class {
@@ -22,7 +23,7 @@ public protocol DJIFrameCaptureDelegate: class {
 }
 
 
-public class DJIVideoCapture: UIView {
+public class DJIVideoCapture: DUXFPVView {
     
     public var previewLayer: UIView!
     public weak var delegate: DJIFrameCaptureDelegate?

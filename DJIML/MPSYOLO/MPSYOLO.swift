@@ -17,8 +17,8 @@ class MPSYOLO {
     public static let maxBoundingBoxes = 10
     
     // Tweak these values to get more or fewer predictions.
-    let confidenceThreshold: Float = 0.3
-    let iouThreshold: Float = 0.5
+    let confidenceThreshold: Float = 0.6
+    let iouThreshold: Float = 0.4
     
     struct Prediction {
         let classIndex: Int
@@ -322,8 +322,8 @@ class MPSYOLO {
                      The size of the bounding box, tw and th, is predicted relative to
                      the size of an "anchor box". Here we also transform the width and height into the original 416x416 image space.
                      */
-                    let w = exp(tw) * anchors[2*b] * blockSize
-                    let h = exp(th) * anchors[2*b+1] * blockSize
+                    let w = exp(tw) * vocAnchors[2*b] * blockSize
+                    let h = exp(th) * vocAnchors[2*b+1] * blockSize
                     
                     /*
                      The confidence value for the bounding box is given by tc. We use

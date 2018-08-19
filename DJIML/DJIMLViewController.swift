@@ -20,13 +20,17 @@ import Accelerate
 var ENABLE_BRIDGE_MODE = false
 let BRIDGE_IP = "192.168.0.105"
 
+var labels = [""]
+
 class DJIMLViewController: UIViewController {
     
-    @IBOutlet weak var fpvPreviewerView: DJIVideoCapture!
+    @IBOutlet weak var fpvPreviewerView: UIView!
     
     @IBOutlet weak var videoPreviewer: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var debugImageView: UIImageView!
+    
+    var datasetBtn: UIButton!
     
     var videoDataProcessor: DJICustomVideoFrameExtractor? = DJICustomVideoFrameExtractor(extractor: ())
     
@@ -49,7 +53,7 @@ class DJIMLViewController: UIViewController {
     
     let semaphore = DispatchSemaphore(value: 2)
     var lastTimestamp = CACurrentMediaTime()
-    var fps = 30
+    var fps = 15
     static var deltaTime = 0
     
     var isPredicting = false
@@ -63,14 +67,15 @@ class DJIMLViewController: UIViewController {
     var textureCache: CVMetalTextureCache?
     var mpsYOLO: MPSYOLO!
 
-    var useCoreML: Bool = false
+    var useCoreML: Bool = true
 
     
     private func setupVideoPreviewer() {
         
+        VideoPreviewer.instance()?.contentClipRect = CGRect(x: 0, y: 0, width: 0.75, height: 0.75)
         VideoPreviewer.instance()?.type = .autoAdapt
-        VideoPreviewer.instance()?.contentClipRect = CGRect(x: 0, y: 0, width: 0.75, height: 0.25)
         VideoPreviewer.instance()?.setView(self.fpvPreviewerView)
+        VideoPreviewer.instance().adjustViewSize()
         
         if let product = DJISDKManager.product() {
             
@@ -121,6 +126,15 @@ class DJIMLViewController: UIViewController {
         
         self.registerApp()
         
+        labels = cocoLabels
+        
+        self.datasetBtn = UIButton(frame: CGRect(x: self.fpvPreviewerView.bounds.width - 116, y: self.timeLabel.frame.minY, width: 96, height: 36))
+        self.datasetBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.datasetBtn.setTitle("Default: COCO(CoreML)", for: .normal)
+        self.fpvPreviewerView.addSubview(self.datasetBtn)
+        
+        self.datasetBtn.addTarget(self, action: #selector(datasetSwitch), for: UIControlEvents.touchUpInside)
+        
         self.timeLabel.textColor = UIColor.white
         self.fpvPreviewerView.addSubview(self.timeLabel)
         
@@ -163,6 +177,18 @@ class DJIMLViewController: UIViewController {
         print(#function)
     }
     
+    @objc func datasetSwitch() {
+        if useCoreML {
+            useCoreML = false
+            labels = vocLabels
+            self.datasetBtn.setTitle("Using VOC(MPS)", for: UIControlState.normal)
+        } else {
+            useCoreML = true
+            labels = cocoLabels
+            self.datasetBtn.setTitle("Using COCO(CoreML)", for: .normal)
+        }
+    }
+    
     // MARK: - Initialization
     
     func setUpBoundingBoxes() {
@@ -174,8 +200,8 @@ class DJIMLViewController: UIViewController {
         // Make colors for the bounding boxes. There is one color for each class,
         // 20 classes in total.
         for r: CGFloat in [0.2, 0.4, 0.6, 0.8, 1.0] {
-            for g: CGFloat in [0.3, 0.7] {
-                for b: CGFloat in [ 0.4, 0.8] {
+            for g: CGFloat in [0.1, 0.3, 0.5, 0.7] {
+                for b: CGFloat in [0.2, 0.4, 0.6, 0.8] {
                     let color = UIColor(red: r, green: g, blue: b, alpha: 1)
                     colors.append(color)
                 }
@@ -210,23 +236,24 @@ class DJIMLViewController: UIViewController {
     
     func setUpCamera() {
         
-        if !useCoreML {
-            guard CVMetalTextureCacheCreate(kCFAllocatorDefault, nil, device, nil, &textureCache) == kCVReturnSuccess else {
-                print("Error: could not create a texture cache")
-                return
-            }
+//        if !useCoreML {
+        guard CVMetalTextureCacheCreate(kCFAllocatorDefault, nil, device, nil, &textureCache) == kCVReturnSuccess else {
+            print("Error: could not create a texture cache")
+            return
         }
+//        }
         
         videoCapture = DJIVideoCapture()
         videoCapture.delegate = self
         videoCapture.fps = 50
         
         // Add the video preview into the UI.
-        if let previewLayer = self.videoCapture {
-//            self.fpvPreviewerView.previewLayer.addSubview(previewLayer)
-            self.fpvPreviewerView.layer.addSublayer(previewLayer.layer)
-            self.resizePreviewLayer()
-        }
+//        if let previewLayer = self.videoCapture {
+////            self.fpvPreviewerView.previewLayer.addSubview(previewLayer)
+////            self.fpvPreviewerView.layer.addSublayer(previewLayer.layer)
+//            self.resizePreviewLayer()
+//        }
+        self.resizePreviewLayer()
         
         // Add the bounding box layers to the UI, on top of the video preview.
         for box in self.boundingBoxes {
@@ -621,11 +648,11 @@ class DJIMLViewController: UIViewController {
                 /*
                  The predicted bounding box is in the coordinate space of the input image,
                  which is a square image of 416x416 pixels. We want to show it on the video preview,
-                 which is as wide as the screen and has a 4:3 aspect ratio.
+                 which is as wide as the screen and has a 16:9 aspect ratio.
                  The video preview also may be letterboxed at the top and bottom.
                  */
                 let width = view.bounds.width
-                let height = width * 4 / 3
+                let height = width * 9 / 16
                 let scaleX = width / CGFloat(YOLO.inputWidth)
                 let scaleY = height / CGFloat(YOLO.inputHeight)
                 let top = (view.bounds.height - height) / 2
@@ -666,7 +693,7 @@ class DJIMLViewController: UIViewController {
                  The video preview also may be letterboxed at the top and bottom.
                  */
                 let width = view.bounds.width
-                let height = width * 4 / 3
+                let height = width * 9 / 16
                 let scaleX = width / CGFloat(MPSYOLO.inputWidth)
                 let scaleY = height / CGFloat(MPSYOLO.inputHeight)
                 let top = (view.bounds.height - height) / 2
@@ -716,8 +743,8 @@ extension DJIMLViewController: DJISDKManagerDelegate, DJIBaseProductDelegate {
     
     func showAlertViewWithTitle(title: String, withMessage message: String) {
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        let okAction = UIAlertAction(title:"OK", style: UIAlertAction.Style.default, handler: nil)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
         
@@ -732,7 +759,8 @@ extension DJIMLViewController: DJISDKManagerDelegate, DJIBaseProductDelegate {
             if let camera = self.fetchCamera() {
                 camera.delegate = self
                 
-                camera.setVideoResolutionAndFrameRate(DJICameraVideoResolutionAndFrameRate(resolution: DJICameraVideoResolution.resolutionMax, frameRate: DJICameraVideoFrameRate.rate60FPS), withCompletion: nil)
+//                camera.setVideoResolutionAndFrameRate(DJICameraVideoResolutionAndFrameRate(resolution: DJICameraVideoResolution.resolution1920x1080, frameRate: DJICameraVideoFrameRate.rate60FPS), withCompletion: nil)
+//                VideoPreviewer.instance().adjustViewSize()
             }
             self.setupVideoPreviewer()
         }
@@ -812,8 +840,8 @@ extension DJIMLViewController: DJIFrameCaptureDelegate {
              the capture queue and drop frames when CoreML can't keep up.
              */
             DispatchQueue.global().async {
-                self.predict(pixelBuffer: pixelBuffer)
-//                self.predictUsingVision(pixelBuffer: pixelBuffer)
+//                self.predict(pixelBuffer: pixelBuffer)
+                self.predictUsingVision(pixelBuffer: pixelBuffer)
             }
         }
     }
