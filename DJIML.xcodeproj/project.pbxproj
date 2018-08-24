@@ -48,6 +48,8 @@
 		A2B91B292111A6A10068274F /* DJIVideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B242111A6A00068274F /* DJIVideoCapture.swift */; };
 		A2B91B2A2111A6A10068274F /* DJIMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B252111A6A00068274F /* DJIMLViewController.swift */; };
 		A2B91B2B2111A6A10068274F /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B91B262111A6A00068274F /* YOLO.swift */; };
+		A2C4FEC9212E475400E24978 /* TrackingRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C4FEC8212E475400E24978 /* TrackingRenderView.swift */; };
+		A2C4FECD212FB1F100E24978 /* DJIMLViewController+DJISDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C4FECC212FB1F100E24978 /* DJIMLViewController+DJISDK.swift */; };
 		A2E1638E211335AA008CB7FC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A2E1638D211335AA008CB7FC /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +127,8 @@
 		A2B91B242111A6A00068274F /* DJIVideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIVideoCapture.swift; sourceTree = "<group>"; };
 		A2B91B252111A6A00068274F /* DJIMLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIMLViewController.swift; sourceTree = "<group>"; };
 		A2B91B262111A6A00068274F /* YOLO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
+		A2C4FEC8212E475400E24978 /* TrackingRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingRenderView.swift; sourceTree = "<group>"; };
+		A2C4FECC212FB1F100E24978 /* DJIMLViewController+DJISDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DJIMLViewController+DJISDK.swift"; sourceTree = "<group>"; };
 		A2E1638D211335AA008CB7FC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C78648C550FD18B6CC1CC108 /* Pods_DJIML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DJIML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCC982CA80434BFB68F613A6 /* Pods-DJIML.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJIML.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DJIML/Pods-DJIML.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,8 +182,10 @@
 				A25201C121119F3900BADE9C /* CoreMLUtils */,
 				A263AAE1211B0C8100B91AB7 /* CoreMLYOLO */,
 				A263AADF211B0A0300B91AB7 /* MPSYOLO */,
+				A2C4FEC7212E472500E24978 /* Target Track */,
 				A2B91B242111A6A00068274F /* DJIVideoCapture.swift */,
 				A2B91B252111A6A00068274F /* DJIMLViewController.swift */,
+				A2C4FECC212FB1F100E24978 /* DJIMLViewController+DJISDK.swift */,
 				A27AA1892129BFC900C834DD /* DefaultLayoutViewController.swift */,
 				A25201AF21119ECE00BADE9C /* AppDelegate.swift */,
 				A27AA18A2129BFC900C834DD /* DJIMLViewController.xib */,
@@ -263,6 +269,14 @@
 				A263AAFC211B60FA00B91AB7 /* conv1.bin */,
 			);
 			path = Parameters;
+			sourceTree = "<group>";
+		};
+		A2C4FEC7212E472500E24978 /* Target Track */ = {
+			isa = PBXGroup;
+			children = (
+				A2C4FEC8212E475400E24978 /* TrackingRenderView.swift */,
+			);
+			path = "Target Track";
 			sourceTree = "<group>";
 		};
 		AA086BAD354BB18B865F6CE4 /* Frameworks */ = {
@@ -432,6 +446,7 @@
 				A263AAEB211B27DE00B91AB7 /* UIImage+MTLTexture.swift in Sources */,
 				A27AA18B2129BFCA00C834DD /* DefaultLayoutViewController.swift in Sources */,
 				A25201CD21119F3900BADE9C /* Array.swift in Sources */,
+				A2C4FEC9212E475400E24978 /* TrackingRenderView.swift in Sources */,
 				A2B91B2B2111A6A10068274F /* YOLO.swift in Sources */,
 				A25201D021119F3900BADE9C /* MultiArray.swift in Sources */,
 				A25201CC21119F3900BADE9C /* UIImage+CVPixelBuffer.swift in Sources */,
@@ -439,6 +454,7 @@
 				A263AAE7211B204500B91AB7 /* MTLTexture+Array.swift in Sources */,
 				A25201CF21119F3900BADE9C /* Predictions.swift in Sources */,
 				A25201D221119F3900BADE9C /* NonMaxSuppression.swift in Sources */,
+				A2C4FECD212FB1F100E24978 /* DJIMLViewController+DJISDK.swift in Sources */,
 				A25201CB21119F3900BADE9C /* Math.swift in Sources */,
 				A2B91B272111A6A10068274F /* TinyYOLO.mlmodel in Sources */,
 				A259EE4B2129BD12009B7E79 /* TinyCOCOYOLO.mlmodel in Sources */,

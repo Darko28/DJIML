@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreML
 import Accelerate
+import DJISDK
 
 
 // The labels for the 20 classes.
@@ -271,4 +272,176 @@ public func softmax(_ x: [Float]) -> [Float] {
     vDSP_vsdiv(x, 1, &sum, &x, 1, len)
     
     return x
+}
+
+
+// MARK: - Utility functions
+
+let INVALID_POINT = CGPoint(x: CGFloat.greatestFiniteMagnitude, y: CGFloat.leastNormalMagnitude)
+
+func showResult(format: String, arguments: [CVarArg] = []) {
+    
+    let message = String(format: format, arguments: arguments)
+    let newMessage = message.hasSuffix(":(null)") ? message.replacingOccurrences(of: ":(null)", with: " successful!") : message
+    
+    DispatchQueue.main.async {
+        let alertController: UIAlertController = UIAlertController(title: nil, message: newMessage, preferredStyle: .alert)
+        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        
+        (UIApplication.shared.keyWindow)!.rootViewController!.present(alertController, animated: true, completion: nil)
+    }
+}
+
+func stringFromPointingExecutionState(state: DJITapFlyMissionState) -> String {
+    switch state {
+    case DJITapFlyMissionState.cannotStart:
+        return "Can Not Fly"
+    case DJITapFlyMissionState.executing:
+        return "Normal Flying"
+    case DJITapFlyMissionState.unknown:
+        return "Unknown"
+    case DJITapFlyMissionState.disconnected:
+        return "Aircraft disconnected"
+    case DJITapFlyMissionState.recovering:
+        return "Connection recovering"
+    case DJITapFlyMissionState.notSupported:
+        return "Not Supported"
+    case DJITapFlyMissionState.readyToStart:
+        return "Ready to start"
+    case DJITapFlyMissionState.executionPaused:
+        return "Execution Paused"
+    case DJITapFlyMissionState.executionResetting:
+        return "Execution Resetting"
+    }
+}
+
+func stringFromTrackingExecutionState(state: DJIActiveTrackTargetState) -> String {
+    switch state {
+    case DJIActiveTrackTargetState.trackingWithHighConfidence:
+        return "Normal Tracking"
+    case DJIActiveTrackTargetState.trackingWithLowConfidence:
+        return "Tracking Uncertain Target"
+    case DJIActiveTrackTargetState.waitingForConfirmation:
+        return "Need Confirm"
+    case DJIActiveTrackTargetState.cannotConfirm:
+        return "Waiting"
+    case DJIActiveTrackTargetState.unknown:
+        return "Unknown"
+    }
+}
+
+func stringFromByPassDirection(direction: DJIBypassDirection) -> String {
+    switch direction {
+    case DJIBypassDirection.none:
+        return "None"
+    case DJIBypassDirection.over:
+        return "From Top"
+    case DJIBypassDirection.left:
+        return "From Left"
+    case DJIBypassDirection.right:
+        return "From Right"
+    case DJIBypassDirection.unknown:
+        return "Unknown"
+    }
+}
+
+func stringFromActiveTrackState(state: DJIActiveTrackMissionState) -> String {
+    switch state {
+    case DJIActiveTrackMissionState.readyToStart:
+        return "ReadyToStart"
+    case DJIActiveTrackMissionState.unknown:
+        return "Unknown"
+    case DJIActiveTrackMissionState.recovering:
+        return "Recovering"
+    case DJIActiveTrackMissionState.cannotStart:
+        return "CannotStart"
+    case DJIActiveTrackMissionState.disconnected:
+        return "Disconnected"
+    case DJIActiveTrackMissionState.notSupported:
+        return "NotSupported"
+    case DJIActiveTrackMissionState.cannotConfirm:
+        return "CannotConfirm"
+    case DJIActiveTrackMissionState.detectingHuman:
+        return "DetectingHuman"
+    case DJIActiveTrackMissionState.onlyCameraFollowing:
+        return "OnlyCameraFollowing"
+    case DJIActiveTrackMissionState.findingTrackedTarget:
+        return "FindingTrackedTarget"
+    case DJIActiveTrackMissionState.waitingForConfirmation:
+        return "WaitingFormConfirmation"
+    case DJIActiveTrackMissionState.performingQuickShot:
+        return "QuickShot"
+    case .aircraftFollowing:
+        return "AircraftFollowing"
+    case .autoSensing:
+        return "AutoSensing"
+    case .autoSensingForQuickShot:
+        return "AutoSensingForQuickShot"
+    }
+}
+
+func stringFromTargetState(state: DJIActiveTrackTargetState) -> String {
+    switch state {
+    case DJIActiveTrackTargetState.trackingWithLowConfidence:
+        return "Low Confident"
+    case DJIActiveTrackTargetState.trackingWithHighConfidence:
+        return "Hight Confident"
+    case DJIActiveTrackTargetState.cannotConfirm:
+        return "Cannot Confirm"
+    case DJIActiveTrackTargetState.unknown:
+        return "Unknown"
+    case DJIActiveTrackTargetState.waitingForConfirmation:
+        return "Waiting For Confirmation"
+    }
+}
+
+func stringFromCannotConfirmReason(reason: DJIActiveTrackCannotConfirmReason) -> String {
+    switch reason {
+    case DJIActiveTrackCannotConfirmReason.none:
+        return "None"
+    case DJIActiveTrackCannotConfirmReason.unknown:
+        return "Unknown"
+    case DJIActiveTrackCannotConfirmReason.targetTooFar:
+        return "Target Too Far"
+    case DJIActiveTrackCannotConfirmReason.aircraftTooLow:
+        return "Aircraft Too Low"
+    case DJIActiveTrackCannotConfirmReason.targetTooHigh:
+        return "Target Too Hight"
+    case DJIActiveTrackCannotConfirmReason.targetTooClose:
+        return "Target Too Close"
+    case DJIActiveTrackCannotConfirmReason.unstableTarget:
+        return "Unstable Target"
+    case DJIActiveTrackCannotConfirmReason.aircraftTooHigh:
+        return "Aircraft Too High"
+    case DJIActiveTrackCannotConfirmReason.gimbalAttitudeError:
+        return "Gimbal Attitude Error"
+    case DJIActiveTrackCannotConfirmReason.obstacleSensorError:
+        return "Sensor Error"
+    case DJIActiveTrackCannotConfirmReason.blockedByObstacle:
+        return "Blocked by Obstacle"
+    }
+}
+
+func stringFromTapFlyState(state: DJITapFlyMissionState) -> String {
+    switch state {
+    case DJITapFlyMissionState.readyToStart:
+        return "ReadyToStart"
+    case DJITapFlyMissionState.unknown:
+        return "Unknown"
+    case DJITapFlyMissionState.executing:
+        return "Executing"
+    case DJITapFlyMissionState.recovering:
+        return "Recovering"
+    case DJITapFlyMissionState.cannotStart:
+        return "CannotStart"
+    case DJITapFlyMissionState.disconnected:
+        return "Disconnected"
+    case DJITapFlyMissionState.notSupported:
+        return "NotSupported"
+    case DJITapFlyMissionState.executionPaused:
+        return "ExecutionPaused"
+    case DJITapFlyMissionState.executionResetting:
+        return "ExecutionResetting"
+    }
 }
